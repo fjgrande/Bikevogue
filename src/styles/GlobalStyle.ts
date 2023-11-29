@@ -31,11 +31,15 @@ a {
   color: inherit;
 }
 
+  img {
+    max-width: 100%;
+  }
+
 button {
   font: inherit;
 }
 
- input, textarea {
+input, textarea {
     font: inherit;
     border: none
   }
