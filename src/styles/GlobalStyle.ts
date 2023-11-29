@@ -7,7 +7,11 @@ const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
 }
 
-body {
+body, h1, h2{
+  margin-top: 0;
+}
+
+html {
   font-family: ${({ theme }) => theme.typography.mainFont};
   background-color: ${({ theme }) => theme.colors.mainBackground};
   color: ${({ theme }) => theme.colors.light};
@@ -15,9 +19,6 @@ body {
   padding: 20px;
 }
 
-h1, h2{
-  margin-top: 0;
-}
 
 ul, li {
   list-style: none;
@@ -33,5 +34,10 @@ a {
 button {
   font: inherit;
 }
+
+ input, textarea {
+    font: inherit;
+    border: none
+  }
 `;
 export default GlobalStyle;
