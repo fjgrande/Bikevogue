@@ -6,13 +6,17 @@ import "@fontsource/lexend";
 import GlobalStyle from "./styles/GlobalStyle";
 import mainTheme from "./styles/mainTheme";
 import App from "./components/App/App";
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
       <ThemeProvider theme={mainTheme}>
-        <GlobalStyle />
-        <App />
+        <Provider store={store}>
+          <GlobalStyle />
+          <App />
+        </Provider>
       </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>,
