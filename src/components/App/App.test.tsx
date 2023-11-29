@@ -13,5 +13,17 @@ describe("Given an App component", () => {
 
       expect(headerLogo).toBeInTheDocument();
     });
+
+    test("Then it should show a 'home' link", () => {
+      const expectedTitle = "home";
+
+      customRender(<App />);
+
+      const navigationLinkHome = screen.getByRole("link", {
+        name: expectedTitle,
+      });
+
+      expect(navigationLinkHome).toBeInTheDocument();
+    });
   });
 });
