@@ -1,12 +1,12 @@
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { useAppDispatch } from "../../store/hooks";
 import HomePageStyled from "./HomePageStyled";
 import { loadBikesActionCreator } from "../../store/features/bikes/bikesSlice";
 import bikesMocks from "../../mocks/bikesMock";
+import bikesData from "../../data/bikesdata";
+import BikeCard from "../../components/BikeCard/BikeCard";
 
 const HomePage = (): React.ReactElement => {
-  const bikesState = useAppSelector((bike) => bike.bikesState);
-
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -16,10 +16,7 @@ const HomePage = (): React.ReactElement => {
   return (
     <HomePageStyled>
       <h2 className="page-title">your favorite bikes</h2>
-
-      {bikesState.bikes.map((bike) => (
-        <h2>{bike.brand}</h2>
-      ))}
+      <BikeCard bike={bikesData} />
     </HomePageStyled>
   );
 };
