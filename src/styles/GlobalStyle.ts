@@ -25,6 +25,9 @@ ul, li {
   padding-left: 0;
   margin: 0;
 }
+dl, dd {
+  margin: 0;
+}
 
 a {
   text-decoration: none;
