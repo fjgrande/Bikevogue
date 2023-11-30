@@ -9,7 +9,7 @@ interface BikesListProps {
 const BikesList = ({ bikes }: BikesListProps): React.ReactElement => {
   return (
     <BikesListStyled>
-      {bikes.map((bike) => (
+      {bikes.map((bike: BikesStructure) => (
         <li key={bike._id}>
           <BikeCard bike={bike} />
         </li>
