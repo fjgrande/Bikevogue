@@ -9,7 +9,7 @@ const BikeCard = ({
   bike: { image, model, brand, modality, price },
 }: BikeProps): React.ReactElement => {
   return (
-    <BikeCardStyled>
+    <BikeCardStyled className="bike-card">
       <div className="bike-card__info">
         <img
           className="bike-card__image"

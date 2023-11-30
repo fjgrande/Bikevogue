@@ -4,13 +4,11 @@ const BikeCardStyled = styled.article`
   background-color: ${({ theme }) => theme.colors.secondaryBackground};
   color: ${({ theme }) => theme.colors.dark};
   border-radius: 15px;
-  width: 315px;
-  height: 500px;
+  width: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   box-shadow: 0 0 25px #00000080;
-  padding: 10 px;
 
   .bike-card {
     padding: 10px;
@@ -19,8 +17,7 @@ const BikeCardStyled = styled.article`
     &__info {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      padding: 10px;
+      padding: 20px;
     }
 
     &__detail {
@@ -34,7 +31,7 @@ const BikeCardStyled = styled.article`
       align-items: center;
       gap: 10px;
       font-size: 16px;
-      padding: 10px;
+      padding: 5px;
     }
 
     &__image {
