@@ -6,6 +6,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { bikesReducer } from "../store/features/bikes/bikesSlice";
 import bikesMocks from "../mocks/bikesMock";
 import { Provider } from "react-redux";
+import GlobalStyle from "../styles/GlobalStyle";
 
 const customRender = (children: React.ReactElement) => {
   const mockStore = configureStore({
@@ -16,6 +17,7 @@ const customRender = (children: React.ReactElement) => {
   return render(
     <BrowserRouter>
       <ThemeProvider theme={mainTheme}>
+        <GlobalStyle />
         <Provider store={mockStore}>{children}</Provider>
       </ThemeProvider>
     </BrowserRouter>,

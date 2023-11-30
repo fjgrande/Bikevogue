@@ -7,12 +7,10 @@ const App = (): React.ReactElement => {
   return (
     <Appstyled>
       <Header />
-      <main>
-        <Routes>
-          <Route path="/" element={<Navigate to="/home" />} />
-          <Route path="/home" element={<HomePage />} />
-        </Routes>
-      </main>
+      <Routes>
+        <Route path="/" element={<Navigate to="/home" />} />
+        <Route path="/home" element={<HomePage />} />
+      </Routes>
     </Appstyled>
   );
 };
