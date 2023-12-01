@@ -1,12 +1,10 @@
 import { BikesStructure } from "../../store/features/bikes/types";
+import { useAppSelector } from "../../store/hooks";
 import BikeCard from "../BikeCard/BikeCard";
 import BikesListStyled from "./BikesListStyled";
 
-interface BikesListProps {
-  bikes: BikesStructure[];
-}
-
-const BikesList = ({ bikes }: BikesListProps): React.ReactElement => {
+const BikesList = (): React.ReactElement => {
+  const bikes = useAppSelector((state) => state.bikesState.bikes);
   return (
     <BikesListStyled>
       {bikes.map((bike: BikesStructure) => (
