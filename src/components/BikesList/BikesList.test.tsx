@@ -8,7 +8,7 @@ describe("Given a BikeList component", () => {
     test("Then it should show a list of bikes where, one of them, is'Orbea Orca M31ETEAM 23' model", () => {
       const expectedBikes = bikesMocks[0].model;
 
-      customRender(<BikesList bikes={bikesMocks} />);
+      customRender(<BikesList />);
 
       const bikeModel = screen.getByText(expectedBikes);
 
