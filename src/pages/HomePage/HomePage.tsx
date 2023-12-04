@@ -19,7 +19,7 @@ const HomePage = (): React.ReactElement => {
 
   return (
     <HomePageStyled>
-      <h2 className="page-title">your favorite bikes</h2>
+      <h1 className="page-title">your favorite bikes</h1>
       <BikesList />
     </HomePageStyled>
   );

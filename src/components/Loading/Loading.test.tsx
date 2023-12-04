@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
-import customRender from "../../testsUtils/customRender";
 import Loading from "./Loading";
+import { customRender } from "../../testsUtils/customRender";
 
 describe("Given a Loading component", () => {
   describe("When it receives the text 'Loading...'", () => {

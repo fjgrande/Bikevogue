@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
-import customRender from "../../testsUtils/customRender";
 import App from "./App";
+import { customRender } from "../../testsUtils/customRender";
 
 describe("Given an App component", () => {
   describe("When it rendered", () => {
