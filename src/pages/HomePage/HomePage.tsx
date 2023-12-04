@@ -12,6 +12,7 @@ const HomePage = (): React.ReactElement => {
   useEffect(() => {
     (async () => {
       const bikes = await getBikes();
+
       dispatch(loadBikesActionCreator(bikes.bikes));
     })();
   }, [dispatch, getBikes]);

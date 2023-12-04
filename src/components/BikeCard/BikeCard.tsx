@@ -18,10 +18,7 @@ const BikeCard = ({
           width="280"
           height="280"
         />
-        <dl className="bike-card__details">
-          <dt className="bike-card__detail">model:</dt>
-          <dd>{model}</dd>
-        </dl>
+        <h2 className="bike-card__details">{model}</h2>
         <dl className="bike-card__details">
           <dt className="bike-card__detail">brand:</dt>
           <dd>{brand}</dd>

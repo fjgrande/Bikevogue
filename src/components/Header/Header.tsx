@@ -8,8 +8,8 @@ const Header = (): React.ReactElement => {
         className="header-logo"
         src="/images/logo.webp"
         alt="Bike logo"
-        width="343"
-        height="125"
+        width="284"
+        height="54"
       />
       <Navigation />
     </HeaderStyled>
