@@ -1,27 +1,33 @@
-import { BrowserRouter } from "react-router-dom";
-import { render } from "@testing-library/react";
+import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import mainTheme from "../styles/mainTheme";
-import { configureStore } from "@reduxjs/toolkit";
-import { bikesReducer } from "../store/features/bikes/bikesSlice";
-import bikesMocks from "../mocks/bikesMock";
-import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import { render } from "@testing-library/react";
 import GlobalStyle from "../styles/GlobalStyle";
+import { getMockStore } from "./providerWrapper";
 
-const customRender = (children: React.ReactElement) => {
-  const mockStore = configureStore({
-    reducer: { bikesState: bikesReducer },
-    preloadedState: { bikesState: { bikes: bikesMocks } },
-  });
+export const customRender = (children: React.ReactElement) => {
+  const mockStore = getMockStore();
 
-  return render(
+  render(
     <BrowserRouter>
       <ThemeProvider theme={mainTheme}>
-        <GlobalStyle />
         <Provider store={mockStore}>{children}</Provider>
+        <GlobalStyle />
       </ThemeProvider>
     </BrowserRouter>,
   );
 };
 
-export default customRender;
+export const customRenderWithoutBrowserRouter = (
+  children: React.ReactElement,
+) => {
+  const mockstore = getMockStore();
+
+  render(
+    <ThemeProvider theme={mainTheme}>
+      <Provider store={mockstore}>{children}</Provider>
+      <GlobalStyle />
+    </ThemeProvider>,
+  );
+};
