@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${({ theme }) => theme.colors.mainBackground};
     color: ${({ theme }) => theme.colors.light};
     margin: 0;
-    padding: 20px;
+    padding: 10px;
   }
 
   ul, li {
