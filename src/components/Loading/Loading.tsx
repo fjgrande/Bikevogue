@@ -4,8 +4,10 @@ const Loading = (): React.ReactElement => {
   return (
     <LoadingStyled>
       <div className="loading">
-        <span className="loader" />
-        Loading...
+        <div className="loader" />
+        <div className="loading__text">
+          <span>Loading...</span>
+        </div>
       </div>
     </LoadingStyled>
   );

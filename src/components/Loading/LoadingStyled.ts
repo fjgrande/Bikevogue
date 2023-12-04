@@ -1,13 +1,19 @@
 import styled from "styled-components";
 
-const LoadingStyled = styled.span`
+const LoadingStyled = styled.div`
   .loading {
     display: flex;
     flex-direction: column;
     align-items: center;
     row-gap: 20px;
     text-transform: capitalize;
+
+    .__text {
+      row-gap: 20px;
+      text-transform: capitalize;
+    }
   }
+
   .loader {
     width: 106px;
     height: 56px;
