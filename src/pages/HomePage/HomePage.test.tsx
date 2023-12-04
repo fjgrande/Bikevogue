@@ -1,6 +1,7 @@
 import { screen } from "@testing-library/react";
-import customRender from "../../testsUtils/customRender";
+
 import HomePage from "./HomePage";
+import { customRender } from "../../testsUtils/customRender";
 
 describe("Given a Home Page", () => {
   describe("When it renders", () => {

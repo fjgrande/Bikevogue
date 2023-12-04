@@ -1,7 +1,8 @@
 import { screen } from "@testing-library/react";
 import bikesMocks from "../../mocks/bikesMock";
-import customRender from "../../testsUtils/customRender";
+
 import BikeCard from "./BikeCard";
+import { customRender } from "../../testsUtils/customRender";
 
 describe("Given a BikeCard component", () => {
   describe("When it receives the bike 'Orbea Orca M30 24'", () => {
