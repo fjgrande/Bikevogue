@@ -4,10 +4,10 @@ const Loading = (): React.ReactElement => {
   return (
     <LoadingStyled>
       <div className="loading">
-        <div className="loader" />
-        <div className="loading__text">
-          <span>Loading...</span>
-        </div>
+        <span className="loader"></span>
+      </div>
+      <div className="loading__text">
+        <span>Loading...</span>
       </div>
     </LoadingStyled>
   );

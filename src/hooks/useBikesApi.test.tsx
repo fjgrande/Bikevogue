@@ -1,6 +1,7 @@
 import { renderHook } from "@testing-library/react";
 import bikesMocks from "../mocks/bikesMock";
 import useBikesApi from "./useBikesApi";
+import { providerWrapper } from "../testsUtils/providerWrapper";
 
 describe("Given a useBikesApi hook", () => {
   describe("When it gets the information of bikes", () => {
@@ -11,9 +12,10 @@ describe("Given a useBikesApi hook", () => {
         result: {
           current: { getBikes },
         },
-      } = renderHook(() => useBikesApi());
+      } = renderHook(() => useBikesApi(), { wrapper: providerWrapper });
 
       const currentBikes = await getBikes();
+
       expect(currentBikes).toStrictEqual(expectedBikes);
     });
   });
