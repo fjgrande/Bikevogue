@@ -1,4 +1,7 @@
+import useBikesApi from "../../hooks/useBikesApi";
+import { deleteBikeActionCreator } from "../../store/features/bikes/bikesSlice";
 import { BikesStructure } from "../../store/features/bikes/types";
+import { useAppDispatch } from "../../store/hooks";
 import Button from "../Button/Button";
 import BikeCardStyled from "./BikeCardStyled";
 
@@ -7,8 +10,16 @@ interface BikeProps {
 }
 
 const BikeCard = ({
-  bike: { image, model, brand, modality, price },
+  bike: { image, model, brand, modality, price, _id },
 }: BikeProps): React.ReactElement => {
+  const dispatch = useAppDispatch();
+  const { deleteBike } = useBikesApi();
+
+  const deleteBikeById = (bikeId: string) => {
+    deleteBike(bikeId);
+    dispatch(deleteBikeActionCreator(bikeId));
+  };
+
   return (
     <BikeCardStyled className="bike-card">
       <div className="bike-card__info">
@@ -33,7 +44,12 @@ const BikeCard = ({
           <dd>{price}€</dd>
         </dl>
       </div>
-      <Button text="delete" />
+      <Button
+        text="delete"
+        actionOnClick={() => {
+          deleteBikeById(_id);
+        }}
+      />
       <Button text="modify" />
     </BikeCardStyled>
   );
