@@ -19,4 +19,21 @@ describe("Given a useBikesApi hook", () => {
       expect(currentBikes).toStrictEqual(expectedBikes);
     });
   });
+
+  describe("When it calls his deleteBike method with an hotel id", () => {
+    test("Then it should delete the 'Orbea Orca M31ETEAM 23' bike", async () => {
+      const expectedBikeId = bikesMocks[0]._id;
+      const expectedResponse = {};
+
+      const {
+        result: {
+          current: { deleteBike },
+        },
+      } = renderHook(() => useBikesApi(), { wrapper: providerWrapper });
+
+      const response = await deleteBike(expectedBikeId);
+
+      expect(response).toStrictEqual(expectedResponse);
+    });
+  });
 });

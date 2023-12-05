@@ -7,6 +7,9 @@ const handlers = [
   http.get(`${urlApi}/bikes`, () => {
     return HttpResponse.json(bikesMocks);
   }),
+  http.delete(`${urlApi}/bikes/delete/6564a20f803b820996b50a00`, () => {
+    return HttpResponse.json({});
+  }),
 ];
 
 export default handlers;
