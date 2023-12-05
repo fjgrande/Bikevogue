@@ -1,6 +1,10 @@
 import { screen } from "@testing-library/react";
 import App from "./App";
-import { customRender } from "../../testsUtils/customRender";
+import {
+  customRender,
+  customRenderWithoutBrowserRouter,
+} from "../../testsUtils/customRender";
+import { MemoryRouter } from "react-router-dom";
 
 describe("Given an App component", () => {
   describe("When it rendered", () => {
@@ -14,16 +18,52 @@ describe("Given an App component", () => {
       expect(headerLogo).toBeInTheDocument();
     });
 
-    test("Then it should show a 'home' link", () => {
-      const expectedTitle = "home";
+    describe("When it is rendered with a HomePage path", () => {
+      test("Then it should show the text 'your favorite bikes' in a heading", () => {
+        const expectedHeadingText = "your favorite bikes";
 
-      customRender(<App />);
+        customRenderWithoutBrowserRouter(
+          <MemoryRouter initialEntries={["/home"]}>
+            <App />
+          </MemoryRouter>,
+        );
 
-      const navigationLinkHome = screen.getByRole("link", {
-        name: expectedTitle,
+        const heading = screen.getByRole("heading", {
+          name: expectedHeadingText,
+        });
+
+        expect(heading).toBeInTheDocument();
       });
+    });
 
-      expect(navigationLinkHome).toBeInTheDocument();
+    describe("When it is rendered", () => {
+      test("Then it should show a 'home' link", () => {
+        const expectedTitle = "home";
+
+        customRender(<App />);
+
+        const navigationLinkHome = screen.getByRole("link", {
+          name: expectedTitle,
+        });
+
+        expect(navigationLinkHome).toBeInTheDocument();
+      });
+    });
+
+    describe("When it is rendered with an invalid path", () => {
+      test("Then it should the text 'Not found...'", () => {
+        const expectedText = "Not found...";
+
+        customRenderWithoutBrowserRouter(
+          <MemoryRouter initialEntries={["/error"]}>
+            <App />
+          </MemoryRouter>,
+        );
+
+        const notFoundPage = screen.getByText(expectedText);
+
+        expect(notFoundPage).toBeInTheDocument();
+      });
     });
   });
 });
