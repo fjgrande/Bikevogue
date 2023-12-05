@@ -16,9 +16,16 @@ const BikesSlice = createSlice({
       ...currentState,
       bikes: action.payload,
     }),
+    deleteBike: (currentState, action: PayloadAction<string>) => ({
+      ...currentState,
+      bikes: currentState.bikes.filter((bike) => bike._id !== action.payload),
+    }),
   },
 });
 
-export const { loadBikes: loadBikesActionCreator } = BikesSlice.actions;
+export const {
+  loadBikes: loadBikesActionCreator,
+  deleteBike: deleteBikeActionCreator,
+} = BikesSlice.actions;
 
 export const bikesReducer = BikesSlice.reducer;
