@@ -24,7 +24,19 @@ const useBikesApi = () => {
     return bikes;
   }, [dispatch]);
 
-  return { getBikes };
+  const deleteBike = useCallback(
+    async (bikeId: string) => {
+      dispatch(showLoadingActionCreator());
+      const { data } = await axios.delete(`/bikes/delete/${bikeId}`);
+
+      dispatch(hideLoadingActionCreator());
+
+      return data;
+    },
+    [dispatch],
+  );
+
+  return { getBikes, deleteBike };
 };
 
 export default useBikesApi;

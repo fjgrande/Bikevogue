@@ -12,6 +12,7 @@ const ButtonStyled = styled.button`
   font-weight: 800;
   justify-content: center;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+  margin: 10px;
 `;
 
 export default ButtonStyled;

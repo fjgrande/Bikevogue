@@ -1,4 +1,5 @@
 import { BikesStructure } from "../../store/features/bikes/types";
+import Button from "../Button/Button";
 import BikeCardStyled from "./BikeCardStyled";
 
 interface BikeProps {
@@ -32,6 +33,8 @@ const BikeCard = ({
           <dd>{price}€</dd>
         </dl>
       </div>
+      <Button text="delete" />
+      <Button text="modify" />
     </BikeCardStyled>
   );
 };

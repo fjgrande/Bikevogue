@@ -12,8 +12,8 @@ export const customRender = (children: React.ReactElement) => {
   render(
     <BrowserRouter>
       <ThemeProvider theme={mainTheme}>
-        <Provider store={mockStore}>{children}</Provider>
         <GlobalStyle />
+        <Provider store={mockStore}>{children}</Provider>
       </ThemeProvider>
     </BrowserRouter>,
   );
@@ -26,8 +26,8 @@ export const customRenderWithoutBrowserRouter = (
 
   render(
     <ThemeProvider theme={mainTheme}>
-      <Provider store={mockstore}>{children}</Provider>
       <GlobalStyle />
+      <Provider store={mockstore}>{children}</Provider>
     </ThemeProvider>,
   );
 };
