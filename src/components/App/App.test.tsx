@@ -50,6 +50,20 @@ describe("Given an App component", () => {
       });
     });
 
+    describe("When it is rendered", () => {
+      test("Then it should show a 'add' link", () => {
+        const expecteTextAdd = "add";
+
+        customRender(<App />);
+
+        const navigationLinkAdd = screen.getByRole("link", {
+          name: expecteTextAdd,
+        });
+
+        expect(navigationLinkAdd).toBeInTheDocument();
+      });
+    });
+
     describe("When it is rendered with an invalid path", () => {
       test("Then it should the text 'Not found...'", () => {
         const expectedText = "Not found...";
