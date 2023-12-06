@@ -6,6 +6,7 @@ import {
   hideLoadingActionCreator,
   showLoadingActionCreator,
 } from "../store/features/ui/uiSlice";
+import { toast } from "react-toastify";
 
 const useBikesApi = () => {
   axios.defaults.baseURL = import.meta.env.VITE_API_URL;
@@ -26,12 +27,25 @@ const useBikesApi = () => {
 
   const deleteBike = useCallback(
     async (bikeId: string) => {
-      dispatch(showLoadingActionCreator());
-      const { data } = await axios.delete(`/bikes/delete/${bikeId}`);
+      try {
+        dispatch(showLoadingActionCreator());
 
-      dispatch(hideLoadingActionCreator());
+        const { data } = await axios.delete(`/bikes/delete/${bikeId}`);
 
-      return data;
+        toast.success("Great! your Bike has been deleted!", {
+          style: { backgroundColor: "#000", color: "#fff" },
+        });
+
+        dispatch(hideLoadingActionCreator());
+
+        return data;
+      } catch {
+        dispatch(hideLoadingActionCreator());
+
+        toast.error("Sorry, we couldn't delete your Bike!", {
+          style: { backgroundColor: "#000", color: "#fff" },
+        });
+      }
     },
     [dispatch],
   );
