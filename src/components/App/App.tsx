@@ -7,6 +7,7 @@ import { useAppSelector } from "../../store/hooks";
 import Loading from "../Loading/Loading";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import ToastifyStyled from "../Toastify/ToastifyStyled";
+import AddBikePage from "../../pages/AddBikePage/AddBikePage";
 
 const App = (): React.ReactElement => {
   const uiState = useAppSelector((state) => state.uiState);
@@ -19,6 +20,7 @@ const App = (): React.ReactElement => {
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<HomePage />} />
+        <Route path="/add" element={<AddBikePage />} />
         <Route path="/*" element={<NotFoundPage />} />
       </Routes>
     </Appstyled>

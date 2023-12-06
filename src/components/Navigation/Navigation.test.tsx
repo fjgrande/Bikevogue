@@ -16,4 +16,17 @@ describe("Given a Navigation component", () => {
       expect(navigationLinkHome).toBeInTheDocument();
     });
   });
+  describe("When it is rendered", () => {
+    test("Then it should show a 'add' link", () => {
+      const expecteTextAdd = "add";
+
+      customRender(<Navigation />);
+
+      const navigationLinkAdd = screen.getByRole("link", {
+        name: expecteTextAdd,
+      });
+
+      expect(navigationLinkAdd).toBeInTheDocument();
+    });
+  });
 });

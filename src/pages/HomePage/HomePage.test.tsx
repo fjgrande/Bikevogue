@@ -1,5 +1,4 @@
 import { screen, waitFor } from "@testing-library/react";
-
 import HomePage from "./HomePage";
 import { customRender } from "../../testsUtils/customRender";
 import { server } from "../../mocks/node";

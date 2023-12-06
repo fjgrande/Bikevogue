@@ -5,7 +5,7 @@ const NavigationStyled = styled.nav`
     display: flex;
     justify-content: center;
     text-transform: uppercase;
-    gap: 30px;
+    gap: 100px;
     font-family: ${({ theme }) => theme.typography.mainFont};
     color: ${({ theme }) => theme.colors.dark};
     font-size: 22px;
