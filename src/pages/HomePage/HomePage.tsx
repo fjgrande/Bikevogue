@@ -4,6 +4,8 @@ import HomePageStyled from "./HomePageStyled";
 import { loadBikesActionCreator } from "../../store/features/bikes/bikesSlice";
 import BikesList from "../../components/BikesList/BikesList";
 import useBikesApi from "../../hooks/useBikesApi";
+import { hideLoadingActionCreator } from "../../store/features/ui/uiSlice";
+import { toast } from "react-toastify";
 
 const HomePage = (): React.ReactElement => {
   const { getBikes } = useBikesApi();
@@ -11,9 +13,17 @@ const HomePage = (): React.ReactElement => {
 
   useEffect(() => {
     (async () => {
-      const bikes = await getBikes();
+      try {
+        const bikes = await getBikes();
 
-      dispatch(loadBikesActionCreator(bikes.bikes));
+        dispatch(loadBikesActionCreator(bikes.bikes));
+      } catch (error) {
+        dispatch(hideLoadingActionCreator());
+
+        toast.error("Sorry, Can't get bikes", {
+          style: { backgroundColor: "#000", color: "#fff" },
+        });
+      }
     })();
   }, [dispatch, getBikes]);
 
