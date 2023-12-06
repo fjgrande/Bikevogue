@@ -14,15 +14,21 @@ const useBikesApi = () => {
   const dispatch = useAppDispatch();
 
   const getBikes = useCallback(async () => {
-    dispatch(showLoadingActionCreator());
+    try {
+      dispatch(showLoadingActionCreator());
 
-    const { data: bikes } = await axios.get<{
-      bikes: BikesStructure[];
-    }>("/bikes");
+      const { data: bikes } = await axios.get<{
+        bikes: BikesStructure[];
+      }>("/bikes");
 
-    dispatch(hideLoadingActionCreator());
+      dispatch(hideLoadingActionCreator());
 
-    return bikes;
+      return bikes;
+    } catch (error) {
+      dispatch(hideLoadingActionCreator());
+
+      throw new Error((error as Error).message);
+    }
   }, [dispatch]);
 
   const deleteBike = useCallback(
