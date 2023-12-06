@@ -15,9 +15,9 @@ const BikeCard = ({
   const dispatch = useAppDispatch();
   const { deleteBike } = useBikesApi();
 
-  const deleteBikeById = (bikeId: string) => {
-    deleteBike(bikeId);
-    dispatch(deleteBikeActionCreator(bikeId));
+  const deleteBikeById = () => {
+    deleteBike(_id);
+    dispatch(deleteBikeActionCreator(_id));
   };
 
   return (
@@ -44,12 +44,7 @@ const BikeCard = ({
           <dd>{price}€</dd>
         </dl>
       </div>
-      <Button
-        text="delete"
-        actionOnClick={() => {
-          deleteBikeById(_id);
-        }}
-      />
+      <Button text="delete" actionOnClick={deleteBikeById} />
       <Button text="modify" />
     </BikeCardStyled>
   );
