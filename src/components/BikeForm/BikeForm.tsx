@@ -15,18 +15,7 @@ const BikeForm = (): React.ReactElement => {
     price: 0,
   };
 
-  const [bikeData, setBikeData] = useState(initialBikeFormState);
-
-  const onChangeForm = (
-    event: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
-  ) => {
-    setBikeData({
-      ...bikeData,
-      [event.target.id]: event.target.value,
-    });
-  };
+  const [bikeData] = useState(initialBikeFormState);
 
   return (
     <BikeFormStyled className="form" autoComplete="off">
@@ -39,7 +28,6 @@ const BikeForm = (): React.ReactElement => {
           type="text"
           id="model"
           value={bikeData.model}
-          onChange={onChangeForm}
           required
         />
         <label className="form__label" htmlFor="image">
@@ -50,7 +38,6 @@ const BikeForm = (): React.ReactElement => {
           type="url"
           id="image"
           value={bikeData.image}
-          onChange={onChangeForm}
           required
         />
         <label className="form__label" htmlFor="brand">
@@ -61,7 +48,6 @@ const BikeForm = (): React.ReactElement => {
           type="text"
           id="brand"
           value={bikeData.brand}
-          onChange={onChangeForm}
           required
         />
         <label className="form__label" htmlFor="modality">
@@ -72,7 +58,6 @@ const BikeForm = (): React.ReactElement => {
           type="text"
           id="modality"
           value={bikeData.modality}
-          onChange={onChangeForm}
           required
         />
         <label className="form__label" htmlFor="material">
@@ -83,7 +68,6 @@ const BikeForm = (): React.ReactElement => {
           type="text"
           id="material"
           value={bikeData.material}
-          onChange={onChangeForm}
           required
         />
         <label className="form__label" htmlFor="component">
@@ -94,7 +78,6 @@ const BikeForm = (): React.ReactElement => {
           type="text"
           id="component"
           value={bikeData.component}
-          onChange={onChangeForm}
           required
         />
         <label className="form__label" htmlFor="size">
@@ -105,7 +88,6 @@ const BikeForm = (): React.ReactElement => {
           type="text"
           id="size"
           value={bikeData.size}
-          onChange={onChangeForm}
           required
         />
         <label className="form__label" htmlFor="price">
@@ -116,7 +98,6 @@ const BikeForm = (): React.ReactElement => {
           type="number"
           id="price"
           value={bikeData.price}
-          onChange={onChangeForm}
           required
         />
         <Button text="add" />
