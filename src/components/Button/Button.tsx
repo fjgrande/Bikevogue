@@ -4,7 +4,6 @@ import ButtonStyled from "./ButtonStyled";
 interface ButtonProps extends PropsWithChildren {
   actionOnClick?: () => void;
   text: string;
-  clasName?: string;
 }
 
 const Button = ({ text, actionOnClick }: ButtonProps): React.ReactElement => {
