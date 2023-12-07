@@ -20,12 +20,20 @@ const BikesSlice = createSlice({
       ...currentState,
       bikes: currentState.bikes.filter((bike) => bike._id !== action.payload),
     }),
+    addBikes: (
+      currentState,
+      action: PayloadAction<BikesStructure>,
+    ): BikesStateStructure => ({
+      ...currentState,
+      bikes: [...currentState.bikes, action.payload],
+    }),
   },
 });
 
 export const {
   loadBikes: loadBikesActionCreator,
   deleteBike: deleteBikeActionCreator,
+  addBikes: addBikesActionCreator,
 } = BikesSlice.actions;
 
 export const bikesReducer = BikesSlice.reducer;
