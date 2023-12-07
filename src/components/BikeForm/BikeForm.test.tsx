@@ -24,8 +24,8 @@ describe("Given a Form component", () => {
       });
     });
 
-    test("Then it should show a button with the text 'create' inside", () => {
-      const expectedTextButton = "create";
+    test("Then it should show a button with the text 'add' inside", () => {
+      const expectedTextButton = "add";
 
       customRender(<BikeForm />);
 

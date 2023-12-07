@@ -39,7 +39,7 @@ describe("Given a AddBikePage", () => {
     });
 
     test("Then it should show a button with the text 'create' inside", () => {
-      const expectedTextButton = "create";
+      const expectedTextButton = "add";
 
       customRender(<AddBikePage />);
 

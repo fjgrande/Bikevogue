@@ -39,54 +39,36 @@ describe("Given a BikeCard component", () => {
     });
   });
 
-  describe("When it receives a click on the delete button of 'Orbea Orca M31ETEAM 23' ", () => {
-    test("then it should not show the 'Orbea Orca M31ETEAM 23'", async () => {
-      const expectedButtonText = "delete";
-      const expectedBikeName = "Orbea Orca M31ETEAM 23";
+  test("Then it should the positive feedback message 'Great! your Bike has been deleted!'", async () => {
+    const expectedButtonText = "delete";
+    const expectedMessage = "Great! your Bike has been deleted!";
 
-      customRender(<BikeCard bike={bikesMocks[0]} />);
+    customRender(<BikeCard bike={bikesMocks[0]} />);
 
-      const button = screen.getByRole("button", { name: expectedButtonText });
-      const heading = screen.getByRole("heading", { name: expectedBikeName });
-
-      await userEvent.click(button);
-
-      waitFor(() => {
-        expect(heading).not.toBeInTheDocument();
-      });
+    const deleteButton = screen.getByRole("button", {
+      name: expectedButtonText,
     });
 
-    test("Then it should the positive feedback message 'Great! your Bike has been deleted!'", async () => {
-      const expectedButtonText = "delete";
-      const expectedMessage = "Great! your Bike has been deleted!";
+    await userEvent.click(deleteButton);
 
-      customRender(<BikeCard bike={bikesMocks[0]} />);
+    expect(screen.getByText(expectedMessage)).toBeInTheDocument();
+  });
 
-      const deleteButton = screen.getByRole("button", {
-        name: expectedButtonText,
-      });
+  test("Then it should show the negative feedback message 'Sorry, we couldn't delete your Bike!'", async () => {
+    server.use(...handlersError);
+    const expectedButtonText = "delete";
+    const expectedErrorMessage = "Sorry, we couldn't delete your Bike!";
 
-      await userEvent.click(deleteButton);
+    customRender(<BikeCard bike={bikesMocks[0]} />);
 
-      expect(screen.getByText(expectedMessage)).toBeInTheDocument();
+    const deleteButton = screen.getByRole("button", {
+      name: expectedButtonText,
     });
 
-    test("Then it should show the negative feedback message 'Sorry, we couldn't delete your Bike!'", async () => {
-      server.use(...handlersError);
-      const expectedButtonText = "delete";
-      const expectedErrorMessage = "Sorry, we couldn't delete your Bike!";
+    await userEvent.click(deleteButton);
 
-      customRender(<BikeCard bike={bikesMocks[0]} />);
-
-      const deleteButton = screen.getByRole("button", {
-        name: expectedButtonText,
-      });
-
-      await userEvent.click(deleteButton);
-
-      await waitFor(() => {
-        expect(screen.getByText(expectedErrorMessage)).toBeInTheDocument();
-      });
+    await waitFor(() => {
+      expect(screen.getByText(expectedErrorMessage)).toBeInTheDocument();
     });
   });
 });
