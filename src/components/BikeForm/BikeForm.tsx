@@ -37,7 +37,7 @@ const BikeForm = (): React.ReactElement => {
           price (€)
         </label>
         <input className="form__input" type="number" id="price" required />
-        <Button text="create" />
+        <Button text="add" />
       </div>
     </BikeFormStyled>
   );
