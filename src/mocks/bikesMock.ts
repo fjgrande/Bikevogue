@@ -1,6 +1,6 @@
 import { BikesStructure } from "../store/features/bikes/types";
 
-const bikesMocks: BikesStructure[] = [
+export const bikesMocks: BikesStructure[] = [
   {
     _id: "6564a20f803b820996b50a00",
     model: "Orbea Orca M31ETEAM 23",

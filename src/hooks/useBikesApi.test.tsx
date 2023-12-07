@@ -20,7 +20,7 @@ describe("Given a useBikesApi hook", () => {
     });
   });
 
-  describe("When it calls his deleteBike method with an hotel id", () => {
+  describe("When it calls his deleteBike method with an bike id", () => {
     test("Then it should delete the 'Orbea Orca M31ETEAM 23' bike", async () => {
       const expectedBikeId = bikesMocks[0]._id;
       const expectedResponse = {};

@@ -1,5 +1,4 @@
-export interface BikesStructure {
-  _id: string;
+export interface BikesData {
   model: string;
   image: string;
   price: number;
@@ -8,6 +7,10 @@ export interface BikesStructure {
   modality: string;
   size: string;
   component: string;
+}
+
+export interface BikesStructure extends BikesData {
+  _id: string;
 }
 
 export interface BikesStateStructure {
