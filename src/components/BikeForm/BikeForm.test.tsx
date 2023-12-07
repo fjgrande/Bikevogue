@@ -1,22 +1,8 @@
 import { screen } from "@testing-library/react";
 import { customRender } from "../../testsUtils/customRender";
-import AddBikePage from "./AddBikePage";
+import BikeForm from "./BikeForm";
 
-describe("Given a AddBikePage", () => {
-  describe("When it renders", () => {
-    test("Then it should show a heading with 'add your favorite bikes'", () => {
-      const headingText = "add your favorite bikes";
-
-      customRender(<AddBikePage />);
-
-      const heading = screen.getByRole("heading", {
-        name: headingText,
-      });
-
-      expect(heading).toBeInTheDocument();
-    });
-  });
-
+describe("Given a Form component", () => {
   describe("When it is rendered", () => {
     test("Then it should show the fields 'model', 'picture URL','brand',' modality','material', 'component', 'size (S,M,L, XL)', ' price (€)' ", () => {
       const labelsName = [
@@ -30,7 +16,7 @@ describe("Given a AddBikePage", () => {
         "price (€)",
       ];
 
-      customRender(<AddBikePage />);
+      customRender(<BikeForm />);
 
       labelsName.forEach((labelName) => {
         const field = screen.getByLabelText(labelName);
@@ -41,7 +27,7 @@ describe("Given a AddBikePage", () => {
     test("Then it should show a button with the text 'create' inside", () => {
       const expectedTextButton = "create";
 
-      customRender(<AddBikePage />);
+      customRender(<BikeForm />);
 
       const button = screen.getByText(expectedTextButton);
 
