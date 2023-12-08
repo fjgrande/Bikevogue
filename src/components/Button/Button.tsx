@@ -4,11 +4,20 @@ import ButtonStyled from "./ButtonStyled";
 interface ButtonProps extends PropsWithChildren {
   actionOnClick?: () => void;
   text: string;
+  disabled?: boolean;
 }
 
-const Button = ({ text, actionOnClick }: ButtonProps): React.ReactElement => {
+const Button = ({
+  text,
+  actionOnClick,
+  disabled,
+}: ButtonProps): React.ReactElement => {
   return (
-    <ButtonStyled className="Button" onClick={actionOnClick}>
+    <ButtonStyled
+      className="Button"
+      onClick={actionOnClick}
+      disabled={disabled}
+    >
       {text}
     </ButtonStyled>
   );
