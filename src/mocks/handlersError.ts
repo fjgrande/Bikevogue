@@ -7,6 +7,7 @@ const handlersError = [
   http.delete(`${urlApi}/bikes/delete/6564a20f803b820996b50a00`, () =>
     HttpResponse.error(),
   ),
+  http.post(`${urlApi}/bikes/add`, () => HttpResponse.error()),
 ];
 
 export default handlersError;

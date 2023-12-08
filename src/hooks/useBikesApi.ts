@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import axios from "axios";
-import { BikesStructure } from "../store/features/bikes/types";
+import { BikesData, BikesStructure } from "../store/features/bikes/types";
 import { useAppDispatch } from "../store/hooks";
 import {
   hideLoadingActionCreator,
@@ -56,7 +56,34 @@ const useBikesApi = () => {
     [dispatch],
   );
 
-  return { getBikes, deleteBike };
+  const addBike = useCallback(
+    async (newBike: BikesData): Promise<BikesStructure | undefined> => {
+      try {
+        dispatch(showLoadingActionCreator());
+
+        const {
+          data: { bike },
+        } = await axios.post<{ bike: BikesStructure }>(`/bikes/add`, newBike);
+
+        dispatch(hideLoadingActionCreator());
+
+        toast.success("Great! your Bike has been created!", {
+          style: { backgroundColor: "#000", color: "#fff" },
+        });
+
+        return bike;
+      } catch {
+        dispatch(hideLoadingActionCreator());
+
+        toast.error("Sorry, we couldn't create your Bike!", {
+          style: { backgroundColor: "#000", color: "#fff" },
+        });
+      }
+    },
+    [dispatch],
+  );
+
+  return { getBikes, deleteBike, addBike };
 };
 
 export default useBikesApi;
