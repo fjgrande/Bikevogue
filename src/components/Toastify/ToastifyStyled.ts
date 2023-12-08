@@ -2,11 +2,11 @@ import { ToastContainer } from "react-toastify";
 import styled from "styled-components";
 
 const ToastifyStyled = styled(ToastContainer)`
-  .toastify-text-icon-color-success {
+  .Toastify-text-icon-color-success {
     color: ${({ theme }) => theme.colors.light};
   }
 
-  .toastify__icon-color-info {
+  .Toastify__icon-color-info {
     color: ${({ theme }) => theme.colors.light};
   }
 
@@ -14,7 +14,7 @@ const ToastifyStyled = styled(ToastContainer)`
     background: ${({ theme }) => theme.colors.light};
   }
 
-  .toastify__close-button {
+  .Toastify__close-button {
     color: ${({ theme }) => theme.colors.light};
   }
 `;

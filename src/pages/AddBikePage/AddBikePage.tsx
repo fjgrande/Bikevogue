@@ -4,7 +4,6 @@ import useBikesApi from "../../hooks/useBikesApi";
 import { addBikesActionCreator } from "../../store/features/bikes/bikesSlice";
 import { BikesData } from "../../store/features/bikes/types";
 import { useAppDispatch } from "../../store/hooks";
-
 import AddBikePageStyled from "./AddBikePageStyled";
 
 const AddBikePage = (): React.ReactElement => {
