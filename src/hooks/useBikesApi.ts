@@ -68,7 +68,7 @@ const useBikesApi = () => {
         dispatch(hideLoadingActionCreator());
 
         toast.success("Great! your Bike has been created!", {
-          style: { backgroundColor: "#000", color: "#fff" },
+          style: { backgroundColor: "#363636", color: "#fff" },
         });
 
         return bike;
@@ -76,7 +76,7 @@ const useBikesApi = () => {
         dispatch(hideLoadingActionCreator());
 
         toast.error("Sorry, we couldn't create your Bike!", {
-          style: { backgroundColor: "#000", color: "#fff" },
+          style: { backgroundColor: "##363636", color: "#fff" },
         });
       }
     },
