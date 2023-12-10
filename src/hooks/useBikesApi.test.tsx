@@ -5,6 +5,7 @@ import { providerWrapper } from "../testsUtils/providerWrapper";
 import { addedBikeMock, createdBikeMock } from "../mocks/addedBikeMock";
 import { server } from "../mocks/node";
 import handlersError from "../mocks/handlersError";
+import handlers from "../mocks/handler";
 
 describe("Given a useBikesApi hook", () => {
   describe("When it gets the information of bikes", () => {
@@ -69,6 +70,41 @@ describe("Given a useBikesApi hook", () => {
       } = renderHook(() => useBikesApi(), { wrapper: providerWrapper });
 
       const newBike = await addBike(expectedNewBike);
+
+      expect(newBike).toBeUndefined();
+    });
+  });
+
+  describe("When it calls the getMyBike function with a valid bike id", () => {
+    test("Then it should return the bike that corresponds to that id", async () => {
+      server.use(...handlers);
+      const idBike = addedBikeMock._id;
+      const expectedBike = addedBikeMock;
+
+      const {
+        result: {
+          current: { getMyBike },
+        },
+      } = renderHook(() => useBikesApi(), { wrapper: providerWrapper });
+
+      const myBike = await getMyBike(idBike);
+
+      expect(myBike).toStrictEqual(expectedBike);
+    });
+  });
+
+  describe("When it calls its getMYbike function with invalid id and the response error", () => {
+    test("Then it should show a 'Can't show this bike now!' message on a Toastify", async () => {
+      server.use(...handlersError);
+      const idBike = addedBikeMock._id;
+
+      const {
+        result: {
+          current: { getMyBike },
+        },
+      } = renderHook(() => useBikesApi(), { wrapper: providerWrapper });
+
+      const newBike = await getMyBike(idBike);
 
       expect(newBike).toBeUndefined();
     });
