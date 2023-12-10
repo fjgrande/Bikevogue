@@ -15,4 +15,5 @@ export interface BikesStructure extends BikesData {
 
 export interface BikesStateStructure {
   bikes: BikesStructure[];
+  selectedBike: BikesStructure;
 }
