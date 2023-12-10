@@ -3,6 +3,17 @@ import { BikesStateStructure, BikesStructure } from "./types";
 
 export const initialBikesState: BikesStateStructure = {
   bikes: [],
+  selectedBike: {
+    model: "",
+    image: "",
+    brand: "",
+    modality: "",
+    material: "",
+    component: "",
+    size: "",
+    price: 0,
+    _id: "",
+  },
 };
 
 const BikesSlice = createSlice({
@@ -27,6 +38,13 @@ const BikesSlice = createSlice({
       ...currentState,
       bikes: [...currentState.bikes, action.payload],
     }),
+    loadSelectedBike: (
+      currentState,
+      action: PayloadAction<BikesStructure>,
+    ): BikesStateStructure => ({
+      ...currentState,
+      selectedBike: action.payload,
+    }),
   },
 });
 
@@ -34,6 +52,7 @@ export const {
   loadBikes: loadBikesActionCreator,
   deleteBike: deleteBikeActionCreator,
   addBikes: addBikesActionCreator,
+  loadSelectedBike: loadSelectedBikeActionCreator,
 } = BikesSlice.actions;
 
 export const bikesReducer = BikesSlice.reducer;
