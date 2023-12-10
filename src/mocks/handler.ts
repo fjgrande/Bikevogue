@@ -14,6 +14,9 @@ const handlers = [
   http.post(`${urlApi}/bikes/add`, () => {
     return HttpResponse.json({ bike: addedBikeMock });
   }),
+  http.get(`${urlApi}/bikes/:_id`, () => {
+    return HttpResponse.json({ myBike: addedBikeMock });
+  }),
 ];
 
 export default handlers;
