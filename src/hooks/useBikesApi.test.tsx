@@ -58,7 +58,7 @@ describe("Given a useBikesApi hook", () => {
     });
   });
 
-  describe("When it calls its addBike function with a 'Super Orbea' and the response error", () => {
+  describe("When it calls its addBike function with a 'Super Orbea' and the response undefined or error", () => {
     test("Then it should show a 'Sorry, we couldn't create your Bike!' message on a Toastify", async () => {
       server.use(...handlersError);
       const expectedNewBike = createdBikeMock;
@@ -93,7 +93,7 @@ describe("Given a useBikesApi hook", () => {
     });
   });
 
-  describe("When it calls its getMYbike function with invalid id and the response error", () => {
+  describe("When it calls its getMYbike function with invalid id and the response undefined or error", () => {
     test("Then it should show a 'Can't show this bike now!' message on a Toastify", async () => {
       server.use(...handlersError);
       const idBike = addedBikeMock._id;
