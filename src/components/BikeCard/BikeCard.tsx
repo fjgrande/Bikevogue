@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useBikesApi from "../../hooks/useBikesApi";
 import { deleteBikeActionCreator } from "../../store/features/bikes/bikesSlice";
 import { BikesStructure } from "../../store/features/bikes/types";
@@ -22,28 +23,30 @@ const BikeCard = ({
 
   return (
     <BikeCardStyled className="bike-card">
-      <div className="bike-card__info">
-        <img
-          className="bike-card__image"
-          src={image}
-          alt={model}
-          width="280"
-          height="280"
-        />
-        <h2 className="bike-card__details">{model}</h2>
-        <dl className="bike-card__details">
-          <dt className="bike-card__detail">brand:</dt>
-          <dd>{brand}</dd>
-        </dl>
-        <dl className="bike-card__details">
-          <dt className="bike-card__detail">modality:</dt>
-          <dd>{modality}</dd>
-        </dl>
-        <dl className="bike-card__details">
-          <dt className="bike-card__detail">price:</dt>
-          <dd>{price}€</dd>
-        </dl>
-      </div>
+      <Link to={`/home/${_id}`}>
+        <div className="bike-card__info">
+          <img
+            className="bike-card__image"
+            src={image}
+            alt={model}
+            width="280"
+            height="280"
+          />
+          <h2 className="bike-card__details">{model}</h2>
+          <dl className="bike-card__details">
+            <dt className="bike-card__detail">brand:</dt>
+            <dd>{brand}</dd>
+          </dl>
+          <dl className="bike-card__details">
+            <dt className="bike-card__detail">modality:</dt>
+            <dd>{modality}</dd>
+          </dl>
+          <dl className="bike-card__details">
+            <dt className="bike-card__detail">price:</dt>
+            <dd>{price}€</dd>
+          </dl>
+        </div>
+      </Link>
       <Button text="delete" actionOnClick={deleteBikeById} />
       <Button text="modify" />
     </BikeCardStyled>
