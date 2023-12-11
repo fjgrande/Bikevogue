@@ -16,9 +16,9 @@ const AddBikePage = (): React.ReactElement => {
 
     if (newBike) {
       dispatch(addBikesActionCreator(newBike));
-    }
 
-    navigate("/home");
+      navigate("/home");
+    }
   };
 
   return (
