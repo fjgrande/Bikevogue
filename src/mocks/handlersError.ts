@@ -8,6 +8,7 @@ const handlersError = [
     HttpResponse.error(),
   ),
   http.post(`${urlApi}/bikes/add`, () => HttpResponse.error()),
+  http.get(`${urlApi}/bikes/:_id`, () => HttpResponse.error()),
 ];
 
 export default handlersError;

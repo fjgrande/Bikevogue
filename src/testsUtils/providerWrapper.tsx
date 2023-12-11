@@ -10,7 +10,20 @@ export const getMockStore = () => {
   const mockStore = configureStore({
     reducer: { bikesState: bikesReducer, uiState: uiReducer },
     preloadedState: {
-      bikesState: { bikes: bikesMocks },
+      bikesState: {
+        bikes: bikesMocks,
+        selectedBike: {
+          model: "",
+          image: "",
+          brand: "",
+          modality: "",
+          material: "",
+          component: "",
+          size: "",
+          price: 0,
+          _id: "",
+        },
+      },
       uiState: { isLoading: false },
     },
   });

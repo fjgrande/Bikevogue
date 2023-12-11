@@ -83,7 +83,30 @@ const useBikesApi = () => {
     [dispatch],
   );
 
-  return { getBikes, deleteBike, addBike };
+  const getMyBike = useCallback(
+    async (_id: string): Promise<BikesStructure | undefined> => {
+      try {
+        dispatch(showLoadingActionCreator());
+
+        const {
+          data: { myBike },
+        } = await axios.get<{ myBike: BikesStructure }>(`/bikes/${_id}`);
+
+        dispatch(hideLoadingActionCreator());
+
+        return myBike;
+      } catch {
+        dispatch(hideLoadingActionCreator());
+
+        toast.error("Can't show this bike now!", {
+          style: { backgroundColor: "#000", color: "#fff" },
+        });
+      }
+    },
+    [dispatch],
+  );
+
+  return { getBikes, deleteBike, addBike, getMyBike };
 };
 
 export default useBikesApi;
