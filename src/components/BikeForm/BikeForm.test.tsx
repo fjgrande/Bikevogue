@@ -20,7 +20,7 @@ describe("Given a Form component", () => {
   ];
   describe("When it is rendered", () => {
     test("Then it should show the fields 'model', 'picture URL','brand',' modality','material', 'component', 'size (S,M,L, XL)', ' price (€)' ", () => {
-      customRender(<BikeForm onSubmit={mockFunction} />);
+      customRender(<BikeForm onSubmit={mockFunction} textButton="add" />);
 
       labelsName.forEach((labelName) => {
         const field = screen.getByLabelText(labelName);
@@ -31,7 +31,7 @@ describe("Given a Form component", () => {
     test("Then it should show a button with the text 'add' inside", () => {
       const expectedTextButton = "add";
 
-      customRender(<BikeForm onSubmit={mockFunction} />);
+      customRender(<BikeForm onSubmit={mockFunction} textButton="add" />);
 
       const button = screen.getByText(expectedTextButton);
 
@@ -41,7 +41,7 @@ describe("Given a Form component", () => {
 
   describe("When it is rendered on the AddPage an all its fields are completed", () => {
     test("Then button 'add' should be enabled", async () => {
-      customRender(<BikeForm onSubmit={mockFunction} />);
+      customRender(<BikeForm onSubmit={mockFunction} textButton="add" />);
 
       const modelInput = screen.getByLabelText(labelsName[0]);
       const pictureInput = screen.getByLabelText(labelsName[1]);
@@ -79,7 +79,7 @@ describe("Given a Form component", () => {
   });
   describe("When user clicks on the button to add a new bike", () => {
     test("Then it should call its onSubmit action", () => {
-      customRender(<BikeForm onSubmit={mockFunction} />);
+      customRender(<BikeForm onSubmit={mockFunction} textButton="add" />);
 
       const bikeForm = screen.getByLabelText(labelsName[0]);
       fireEvent.submit(bikeForm);

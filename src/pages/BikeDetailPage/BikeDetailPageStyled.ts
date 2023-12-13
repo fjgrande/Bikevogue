@@ -12,16 +12,17 @@ const BikeDetailPageStyled = styled.section`
     &__info {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      justify-content: center;
+      border-radius: 15px;
       padding: 20px;
       background-color: ${({ theme }) => theme.colors.secondaryBackground};
       color: ${({ theme }) => theme.colors.dark};
-      border-radius: 15px;
     }
 
     &__detail {
       font-size: 16px;
       text-transform: capitalize;
+      text-decoration: underline;
     }
 
     &__details {
