@@ -16,15 +16,14 @@ const AddBikePage = (): React.ReactElement => {
 
     if (newBike) {
       dispatch(addBikesActionCreator(newBike));
-
-      navigate("/home");
     }
+    navigate("/home");
   };
 
   return (
     <AddBikePageStyled>
       <h1 className="page-title">add your favorite bikes</h1>
-      <BikeForm onSubmit={onSubmit} />
+      <BikeForm onSubmit={onSubmit} textButton="add" isEditMode={false} />
     </AddBikePageStyled>
   );
 };
