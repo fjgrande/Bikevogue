@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BikesData, BikesStructure } from "../../store/features/bikes/types";
 import Button from "../Button/Button";
 import BikeFormStyled from "./BikeFormStyled";
@@ -30,6 +30,12 @@ const BikeForm = ({
   const [bikeData, setBikeData] = useState(
     isEditMode ? (bike as BikesData) : initialBikeFormState,
   );
+
+  useEffect(() => {
+    if (bike) {
+      setBikeData({ ...bike });
+    }
+  }, [bike]);
 
   const onChangeForm = (
     event: React.ChangeEvent<

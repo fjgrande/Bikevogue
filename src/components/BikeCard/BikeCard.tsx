@@ -1,9 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import useBikesApi from "../../hooks/useBikesApi";
-import {
-  deleteBikeActionCreator,
-  loadSelectedBikeActionCreator,
-} from "../../store/features/bikes/bikesSlice";
+import { deleteBikeActionCreator } from "../../store/features/bikes/bikesSlice";
 import { BikesStructure } from "../../store/features/bikes/types";
 import { useAppDispatch } from "../../store/hooks";
 import Button from "../Button/Button";
@@ -17,7 +14,7 @@ const BikeCard = ({
   bike: { image, model, brand, modality, price, _id },
 }: BikeProps): React.ReactElement => {
   const dispatch = useAppDispatch();
-  const { deleteBike, getMyBike } = useBikesApi();
+  const { deleteBike } = useBikesApi();
   const navigate = useNavigate();
 
   const deleteBikeById = () => {
@@ -26,12 +23,7 @@ const BikeCard = ({
   };
 
   const handleOnModify = async () => {
-    const selectedBike = await getMyBike(_id);
-    if (selectedBike) {
-      dispatch(loadSelectedBikeActionCreator(selectedBike));
-    }
-
-    navigate("/edit-bike");
+    navigate(`/edit-bike/${_id}`);
   };
 
   return (
