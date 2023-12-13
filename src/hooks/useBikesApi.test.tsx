@@ -2,7 +2,11 @@ import { renderHook } from "@testing-library/react";
 import bikesMocks from "../mocks/bikesMock";
 import useBikesApi from "./useBikesApi";
 import { providerWrapper } from "../testsUtils/providerWrapper";
-import { addedBikeMock, createdBikeMock } from "../mocks/addedBikeMock";
+import {
+  addedBikeMock,
+  createdBikeMock,
+  updateBikeMock,
+} from "../mocks/addedBikeMock";
 import { server } from "../mocks/node";
 import handlersError from "../mocks/handlersError";
 import handlers from "../mocks/handler";
@@ -20,7 +24,7 @@ describe("Given a useBikesApi hook", () => {
 
       const currentBikes = await getBikes();
 
-      expect(currentBikes).toStrictEqual(expectedBikes);
+      expect(currentBikes).toStrictEqual({ bikes: expectedBikes });
     });
   });
 
@@ -105,6 +109,41 @@ describe("Given a useBikesApi hook", () => {
       } = renderHook(() => useBikesApi(), { wrapper: providerWrapper });
 
       const newBike = await getMyBike(idBike);
+
+      expect(newBike).toBeUndefined();
+    });
+  });
+
+  describe("When it calls the editBike function with the data of the bike 'Super Orbea'", () => {
+    test("Then it should return the bike 'Super Orbea' modified", async () => {
+      server.use(...handlers);
+      const expectedNewBike = updateBikeMock;
+      const expectedBike = addedBikeMock;
+
+      const {
+        result: {
+          current: { editBike },
+        },
+      } = renderHook(() => useBikesApi(), { wrapper: providerWrapper });
+
+      const bikeData = await editBike(expectedNewBike);
+
+      expect(bikeData).toStrictEqual(expectedBike);
+    });
+  });
+
+  describe("When it calls its editBike function with invalid id and the response undefined or error", () => {
+    test("Then it should show a 'Sorry, we couldn't modified your Bike!' message on a Toastify", async () => {
+      server.use(...handlersError);
+      const expectedNewBike = updateBikeMock;
+
+      const {
+        result: {
+          current: { editBike },
+        },
+      } = renderHook(() => useBikesApi(), { wrapper: providerWrapper });
+
+      const newBike = await editBike(expectedNewBike);
 
       expect(newBike).toBeUndefined();
     });
