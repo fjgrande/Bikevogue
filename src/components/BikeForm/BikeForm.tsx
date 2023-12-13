@@ -1,13 +1,21 @@
 import { useState } from "react";
-import { BikesData } from "../../store/features/bikes/types";
+import { BikesData, BikesStructure } from "../../store/features/bikes/types";
 import Button from "../Button/Button";
 import BikeFormStyled from "./BikeFormStyled";
 
 interface FormProps {
-  onSubmit: (bikeData: BikesData) => void;
+  onSubmit: (bikeData: BikesData | BikesStructure) => void;
+  bike?: BikesStructure;
+  textButton: string;
+  isEditMode?: boolean;
 }
 
-const BikeForm = ({ onSubmit }: FormProps): React.ReactElement => {
+const BikeForm = ({
+  onSubmit,
+  bike,
+  textButton,
+  isEditMode = false,
+}: FormProps): React.ReactElement => {
   const initialBikeFormState: BikesData = {
     model: "",
     image: "",
@@ -19,7 +27,9 @@ const BikeForm = ({ onSubmit }: FormProps): React.ReactElement => {
     price: 0,
   };
 
-  const [bikeData, setBikeData] = useState(initialBikeFormState);
+  const [bikeData, setBikeData] = useState(
+    isEditMode ? (bike as BikesData) : initialBikeFormState,
+  );
 
   const onChangeForm = (
     event: React.ChangeEvent<
@@ -34,7 +44,7 @@ const BikeForm = ({ onSubmit }: FormProps): React.ReactElement => {
 
   const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event?.preventDefault();
-    onSubmit(bikeData);
+    onSubmit(isEditMode ? (bikeData as BikesStructure) : bikeData);
   };
 
   const disabledButton =
@@ -142,7 +152,7 @@ const BikeForm = ({ onSubmit }: FormProps): React.ReactElement => {
           onChange={onChangeForm}
           required
         />
-        <Button text="add" disabled={disabledButton} />
+        <Button text={textButton} disabled={disabledButton} />
       </div>
     </BikeFormStyled>
   );
