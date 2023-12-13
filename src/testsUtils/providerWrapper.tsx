@@ -5,6 +5,7 @@ import bikesMocks from "../mocks/bikesMock";
 import { Provider } from "react-redux";
 import { PropsWithChildren } from "react";
 import { store } from "../store";
+import { MemoryRouter } from "react-router-dom";
 
 export const getMockStore = () => {
   const mockStore = configureStore({
@@ -32,5 +33,9 @@ export const getMockStore = () => {
 };
 
 export const providerWrapper = ({ children }: PropsWithChildren) => {
-  return <Provider store={store}>{children}</Provider>;
+  return (
+    <MemoryRouter>
+      <Provider store={store}>{children}</Provider>;
+    </MemoryRouter>
+  );
 };
