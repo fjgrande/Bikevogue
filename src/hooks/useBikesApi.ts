@@ -76,7 +76,7 @@ const useBikesApi = () => {
         dispatch(hideLoadingActionCreator());
 
         toast.error("Sorry, we couldn't create your Bike!", {
-          style: { backgroundColor: "##363636", color: "#fff" },
+          style: { backgroundColor: "#363636", color: "#fff" },
         });
       }
     },
@@ -106,7 +106,34 @@ const useBikesApi = () => {
     [dispatch],
   );
 
-  return { getBikes, deleteBike, addBike, getMyBike };
+  const editBike = useCallback(
+    async (bikeData: BikesStructure): Promise<BikesStructure | undefined> => {
+      try {
+        dispatch(showLoadingActionCreator());
+
+        const {
+          data: { editedBike },
+        } = await axios.put<{ editedBike: BikesStructure }>("/bikes", bikeData);
+
+        dispatch(hideLoadingActionCreator());
+
+        toast.success("Great! your Bike has been modified!", {
+          style: { backgroundColor: "#363636", color: "#fff" },
+        });
+
+        return editedBike;
+      } catch {
+        dispatch(hideLoadingActionCreator());
+
+        toast.error("Sorry, we couldn't modified your Bike!", {
+          style: { backgroundColor: "#363636", color: "#fff" },
+        });
+      }
+    },
+    [dispatch],
+  );
+
+  return { getBikes, deleteBike, addBike, getMyBike, editBike };
 };
 
 export default useBikesApi;
