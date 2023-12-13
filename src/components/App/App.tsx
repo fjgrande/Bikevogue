@@ -23,8 +23,8 @@ const App = (): React.ReactElement => {
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/add" element={<AddBikePage />} />
-        <Route path="/edit-bike" element={<UpdateBikePage />} />
         <Route path="/home/:_id" element={<BikeDetailPage />} />
+        <Route path="/edit-bike/:_id" element={<UpdateBikePage />} />
         <Route path="/*" element={<NotFoundPage />} />
       </Routes>
     </Appstyled>
